@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/connection');
 
-router.get('/', (req,res)=>{
+router.get('/api', (req,res)=>{
     db.query('SELECT * FROM department', (err,data)=>{
         if(err){
             console.log(err);
@@ -12,7 +12,7 @@ router.get('/', (req,res)=>{
         }
     })
 });
-router.post('/', (req,res)=>{
+router.post('/api', (req,res)=>{
     db.query('INSERT INTO department(name)VALUES(?)', [req.body.name],(err,data)=>{
         if(err){
             console.log(err);
@@ -23,7 +23,7 @@ router.post('/', (req,res)=>{
     })
     
 });
-router.delete('/:id',(req,res)=>{
+router.delete('/api:id',(req,res)=>{
     db.query('DELETE FROM department WHERE id = ?', [req.params.id],(err,data)=>{
         if(err){
             console.log(err);
