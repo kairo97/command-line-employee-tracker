@@ -1,10 +1,9 @@
 const express = require('express');
-const inquirer = require('inquirer');
 const router = express.Router();
 const db = require('../config/connection');
 
 
-router.get('/api', (req,res)=>{
+router.get('/', (req,res)=>{
     db.query('SELECT * FROM role', (err,data)=>{
         if(err){
             console.log(err);
@@ -14,7 +13,7 @@ router.get('/api', (req,res)=>{
         }
     })
 });
-router.post('/api', (req,res)=>{
+router.post('/', (req,res)=>{
     db.query('INSERT INTO role(name)VALUES(?)', [req.body.name],(err,data)=>{
         if(err){
             console.log(err);
@@ -25,7 +24,7 @@ router.post('/api', (req,res)=>{
     })
     
 });
-router.delete('/api:id',(req,res)=>{
+router.delete('/:id',(req,res)=>{
     db.query('DELETE FROM role WHERE id = ?', [req.params.id],(err,data)=>{
         if(err){
             console.log(err);
