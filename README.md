@@ -2,7 +2,7 @@
 # CLI company database
 ## Description
         this application uses inquirer, nodejs, express, and mysql to create a database that can be accessed via the command line terminal (currently I am having an issue accessing the command line prompts no error is seen, hopefully this is only on my client computer) 
-        N/A
+        
 ## Table of contents
  *installion
  *usage
@@ -28,5 +28,6 @@
 ## Features
         node.js, express, inquirer, mysql, and command line interface
 
-        
+## Video link
+        https://youtu.be/rfnoybwV_Cw
         
