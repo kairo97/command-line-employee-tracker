@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/connection');
 
-
+function getRole(){
 router.get('/', (req,res)=>{
     db.query('SELECT * FROM role', (err,data)=>{
         if(err){
@@ -13,6 +13,8 @@ router.get('/', (req,res)=>{
         }
     })
 });
+}
+function addRole(){
 router.post('/', (req,res)=>{
     db.query('INSERT INTO role(name)VALUES(?)', [req.body.name],(err,data)=>{
         if(err){
@@ -24,6 +26,8 @@ router.post('/', (req,res)=>{
     })
     
 });
+}
+function deleteRole(){
 router.delete('/:id',(req,res)=>{
     db.query('DELETE FROM role WHERE id = ?', [req.params.id],(err,data)=>{
         if(err){
@@ -34,7 +38,10 @@ router.delete('/:id',(req,res)=>{
         }
     })
 })
+}
 
-
+exports.getRole = getRole;
+exports.addRole = addRole;
+exports.deleteRole = deleteRole;
 
 module.exports = router;
