@@ -2,7 +2,7 @@
 
 // requirements for file
 const express = require('express');
-const  inquirer  = require('inquirer');
+const table = require('console.table');
 const db = require('./config/connection');
 const prompts = require('./prompts');
 require('mysql2');
@@ -19,5 +19,5 @@ const allRoutes = require('./controllers');
 app.use(allRoutes)
 // listening when node is started
 app.listen(PORT, () => {
-    console.log(`Listeneing on port ${PORT}`)
+    console.log(`Listening on port ${PORT}`)
 });

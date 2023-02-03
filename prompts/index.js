@@ -9,7 +9,7 @@ const { getDepartment, addDepartment, deleteDepartment} = require("../controller
 const { getRole, addRole, deleteRole} = require('../controllers/roleController');
 const { getEmployee, addEmployee, deleteEmployee} = require('../controllers/employeeController');
 // starting inquirer
-inquirer.prompt([
+ inquirer.prompt([
     {
         type: "list",
         name: "start",
