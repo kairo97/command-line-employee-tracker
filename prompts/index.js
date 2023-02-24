@@ -5,33 +5,55 @@ const db = require('../config/connection');
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 // importing functions from controller files for use in inquirer
-const { getDepartment, addDepartment, deleteDepartment} = require("../controllers/departmentController");
-const { getRole, addRole, deleteRole} = require('../controllers/roleController');
-const { getEmployee, addEmployee, deleteEmployee} = require('../controllers/employeeController');
+const { getDepartment, addDepartment} = require("../controllers/departmentController");
+const { getRole, addRole} = require('../controllers/roleController');
+const { getEmployee, addEmployee} = require('../controllers/employeeController');
 // starting inquirer
- inquirer.prompt([
-    {
-        type: "list",
-        name: "start",
-        message: "what would you like to do?",
-        choices: ["view all departments", "view all roles",
-         "view all employees", "add a department",
-        "add a role", "add an employee", "update an employee role", "exit"]
-    }
-]).then(answers=>{
-    if (answers === "view all departments"){
+function startPrompts() {
+    return new Promise((resolve, reject) => {
+      inquirer.prompt([
+        {
+          type: "list",
+          name: "start",
+          message: "what would you like to do?",
+          choices: [
+            "view all departments",
+            "view all roles",
+            "view all employees",
+            "add a department",
+            "add a role",
+            "add an employee",
+            "update an employee role",
+            "exit",
+          ],
+        },
+      ])
+        .then((answers) => {
+          resolve(answers.start);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
+  startPrompts().then(answers=>{
+    if (answers.start === "view all departments") {
         getDepartment();
-    } else if (answers === 'view all roles'){
+    } else if (answers.start === "view all roles") {
         getRole();
-    } else if (answers === "view all employees"){
+    } else if (answers.start === "view all employees") {
         getEmployee();
-    } else if (answers === "add a department"){
+    } else if (answers.start === "add a department") {
         addDepartment();
-     } else if (answers === "add a role"){
+    } else if (answers.start === "add a role") {
         addRole();
-     } else if (answers === "add an employee"){
+    } else if (answers.start === "add an employee") {
         addEmployee();
-     }
+    } else if (answers.start === "exit") {
+        console.log("Exiting program...");
+        process.exit();
+    }
 })
 
-module.exports = prompts;
+  startPrompts();
+ 
