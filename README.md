@@ -6,7 +6,7 @@
 ## Table of contents
  *installion
  *usage
- *credits
+
  *liscense
  *features        
         
@@ -16,8 +16,6 @@
 ## Usage
         the usage of this application is via the command line interface to access a company database including departments, roles, and employees
         
-## Credits
-        N/A
         
 ## License
         MIT license
@@ -29,5 +27,5 @@
         node.js, express, inquirer, mysql, and command line interface
 
 ## Video link
-        https://youtu.be/rfnoybwV_Cw
-        
+          https://youtu.be/ky1FGThwAo8
+       
