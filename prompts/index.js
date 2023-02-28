@@ -67,7 +67,7 @@ function addEmployee(){
         {
         type: "input",
         name: "managerId",
-        message: "what is their manager's name?"
+        message: "what is their manager's Id?"
       }, 
         {
         type: "list",
@@ -103,6 +103,31 @@ function getRole(){
       startPrompts()
     }
   })
+}
+function addRole(){
+  inquirer.prompt([
+    {
+      type: "input",
+      name:"newRole",
+      message:"what is this role's title?"
+    },{
+      type: 'input',
+      name: "roleSalary",
+      message: "what is this role's salary?"
+    },{
+      type: "input",
+      name:"roleDeptId",
+      message:"what is the dept Id for this role?"
+    }
+  ])
+  db.query('INSERT INTO role(name, salary, deptartmentId', [name, salary, deptId], (err, data) => {
+    if (err){
+      console.log(err)
+    } else {
+      console.table(data)
+      startPrompts()
+    }
+  } )
 }
 
 // starting inquirer
